@@ -10,12 +10,14 @@
       margin: 0;
       height: 100vh;
       font-family: 'Pacifico', cursive;
-      background: url('https://images.unsplash.com/photo-1526045478516-99145907023c') no-repeat center/cover;
+      background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...") 
+        no-repeat center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
+
     .container {
       background: rgba(255,255,255,0.88);
       padding: 25px;
@@ -26,10 +28,12 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
       z-index: 10;
     }
+
     h1 {
       color: #d63384;
       animation: heartbeat 1.5s infinite;
     }
+
     @keyframes heartbeat {
       0% { transform: scale(1); }
       25% { transform: scale(1.05); }
@@ -37,6 +41,7 @@
       60% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
+
     button {
       font-family: 'Pacifico', cursive;
       font-size: 20px;
@@ -46,15 +51,18 @@
       cursor: pointer;
       margin: 10px;
     }
+
     #yes {
       background: #ff4d6d;
       color: white;
     }
+
     #no {
       background: #adb5bd;
       color: black;
       position: absolute;
     }
+
     .letter {
       display: none;
       font-size: 18px;
@@ -63,20 +71,24 @@
       opacity: 0;
       animation: fadeIn 2s forwards;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .kiss {
       position: absolute;
       font-size: 28px;
       animation: floatUp 4s linear infinite;
       z-index: 5;
     }
+
     @keyframes floatUp {
       from { transform: translateY(0); opacity: 1; }
       to { transform: translateY(-700px); opacity: 0; }
     }
+
     .petal {
       position: absolute;
       top: -50px;
@@ -84,11 +96,13 @@
       animation: fall linear infinite;
       z-index: 1;
     }
+
     @keyframes fall {
       to { transform: translateY(110vh) rotate(360deg); }
     }
   </style>
 </head>
+
 <body>
   <audio id="music" src="music.ogg" loop></audio>
 
