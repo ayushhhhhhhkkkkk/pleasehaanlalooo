@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Valentine ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Pacifico', cursive;
+      background: url('https://images.unsplash.com/photo-1526045478516-99145907023c') no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .container {
+      background: rgba(255,255,255,0.88);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+    h1 {
+      color: #d63384;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.05); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    button {
+      font-family: 'Pacifico', cursive;
+      font-size: 20px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    #no {
+      background: #adb5bd;
+      color: black;
+      position: absolute;
+    }
+    .letter {
+      display: none;
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .kiss {
+      position: absolute;
+      font-size: 28px;
+      animation: floatUp 4s linear infinite;
+      z-index: 5;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-700px); opacity: 0; }
+    }
+    .petal {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <audio id="music" src="music.ogg" loop></audio>
+
+  <div class="container" id="proposal">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yes">YES 💋</button>
+    <button id="no">NO 🙈</button>
+  </div>
+
+  <div class="container letter" id="letter">
+    <p>
+      My love,<br><br>
+      Thank you, my beautiful princess, for accepting my proposal. It is a blessing to have you in my life, and I feel like the luckiest person because you chose me as your partner. I’ll always put in the effort to keep us together and will make you proud. There will be highs and lows, but you will always find me by your side, and we will achieve our dreams together.<br><br>
+      Forever easy nahi hoga but worth it hoga
+    </p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const proposal = document.getElementById("proposal");
+    const letter = document.getElementById("letter");
+    const music = document.getElementById("music");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      proposal.style.display = "none";
+      letter.style.display = "block";
+      music.play();
+      startKisses();
+    });
+
+    function startKisses() {
+      setInterval(() => {
+        const kiss = document.createElement("div");
+        kiss.className = "kiss";
+        kiss.innerHTML = "💋";
+        kiss.style.left = Math.random() * window.innerWidth + "px";
+        kiss.style.bottom = "0px";
+        document.body.appendChild(kiss);
+        setTimeout(() => kiss.remove(), 4000);
+      }, 300);
+    }
+
+    function createPetal() {
+      const petal = document.createElement("div");
+      petal.className = "petal";
+      petal.innerHTML = "🌹";
+      petal.style.left = Math.random() * window.innerWidth + "px";
+      petal.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 8000);
+    }
+
+    setInterval(createPetal, 400);
+  </script>
+</body>
+</html>
